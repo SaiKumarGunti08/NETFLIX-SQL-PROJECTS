@@ -1,6 +1,6 @@
 # NETFLIX-SQL-PROJECTS
 
-[Netflix Logo](https://github.com/SaiKumarGunti08/NETFLIX-SQL-PROJECTS/blob/main/netflix%20image.jpg)
+![Netflix Logo](https://github.com/SaiKumarGunti08/NETFLIX-SQL-PROJECTS/blob/main/netflix%20image.jpg)
 
 Data Analysis Project on NETFLIX Using SQL
 
