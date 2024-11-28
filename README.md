@@ -1,6 +1,6 @@
 # NETFLIX-SQL-PROJECTS
 
-[Netflix Logo](https://www.google.com/url?sa=i&url=https%3A%2F%2Fbrand.netflix.com%2Fen%2Fassets%2Flogos%2F&psig=AOvVaw3GwDE7daClgVBnjxiz7xut&ust=1732882096157000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCICdkYGA_4kDFQAAAAAdAAAAABAE)
+[Netflix Logo](https://github.com/SaiKumarGunti08/NETFLIX-SQL-PROJECTS/blob/main/netflix%20image.jpg)
 
 Data Analysis Project on NETFLIX Using SQL
 
