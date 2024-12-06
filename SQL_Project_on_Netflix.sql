@@ -190,7 +190,8 @@ SELECT type_of_content,title,description,
 		END CONTENT_TYPE
 FROM netflix;
 
--- FIND THE COUNT OF GOOD AND BAD CONTENT
+
+-- Finding the good and bad content.
 
 WITH new_table
 AS
