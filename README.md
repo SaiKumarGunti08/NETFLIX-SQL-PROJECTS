@@ -9,7 +9,7 @@ Software : PostgreSQL Workbench (PGAdmin 4)
 ## Project Overview :
 The project demonstrates proficiency in SQL through analysis of a Netflix dataset. It includes queries to extract insights, perform aggregations, and apply advanced SQL features. This work showcases the ability to solve business problems using data.
 
-```
+
 ### 1. Total count of rows
 ```sql 
 SELECT COUNT(*) FROM netflix;
@@ -137,5 +137,4 @@ SELECT title, description,
            ELSE 'GOOD_CONTENT'
        END AS content_type
 FROM netflix;
-```
 ```
