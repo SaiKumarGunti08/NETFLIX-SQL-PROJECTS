@@ -16,19 +16,19 @@ SELECT COUNT(*) FROM netflix;
 ```
 
 ### 2. Find the type of content
-...
+```sql
 SELECT DISTINCT type_of_content FROM netflix;
-...
+```
 
 ### 3. Count of each content type
-...
+```sql
 SELECT type_of_content, COUNT(type_of_content) AS count_of_content
 FROM netflix
 GROUP BY type_of_content;
 ...
 
 ### 4. Find the most common rating for movies and TV shows
-...
+```sql
 SELECT type_of_content, rating
 FROM (
     SELECT type_of_content, rating, COUNT(*),
@@ -40,14 +40,14 @@ WHERE ranking = 1;
 ...
 
 ### 5. List all the movies released in a specific year (e.g., 2020)
-...
+```sql
 SELECT title, release_year
 FROM netflix
 WHERE type_of_content = 'Movie' AND release_year = 2020;
 ...
 
 ### 6. Top 5 countries with the most content
-...
+```sql
 SELECT TRIM(UNNEST(STRING_TO_ARRAY(country, ','))) AS new_countries, 
        COUNT(show_id) AS count_content
 FROM netflix
@@ -57,7 +57,7 @@ LIMIT 5;
 ...
 
 ### 7. Longest-duration movies
-...
+```sql
 SELECT type_of_content, duration
 FROM netflix
 WHERE type_of_content = 'Movie' AND 
@@ -69,25 +69,30 @@ SELECT type_of_content, title, date_added
 FROM netflix
 WHERE TO_DATE(date_added, 'Month DD, YYYY') >= CURRENT_DATE - INTERVAL '5 years';
 ``` 
--- 9. Content directed by a specific director (e.g., Rajiv Chilaka)
+### 9. Content directed by a specific director (e.g., Rajiv Chilaka)
+
+```sql
 SELECT title, type_of_content, director
 FROM netflix
 WHERE director ILIKE '%Rajiv Chilaka%';
-
--- 10. TV shows with 5 or more seasons
+```
+### 10. TV shows with 5 or more seasons
+```sql
 SELECT type_of_content, duration
 FROM netflix
 WHERE type_of_content = 'TV Show' AND 
       SPLIT_PART(duration, ' ', 1)::NUMERIC >= 5;
-
--- 11. Count of content in each genre
+```
+### 11. Count of content in each genre
+```sql
 SELECT TRIM(UNNEST(STRING_TO_ARRAY(listed_in, ','))) AS genre, 
        COUNT(show_id) AS count_of_content
 FROM netflix
 GROUP BY genre
 ORDER BY count_of_content DESC;
-
--- 12. Average number of content releases by India for each year
+```
+### 12. Average number of content releases by India for each year
+```sql
 SELECT EXTRACT(YEAR FROM TO_DATE(date_added, 'Month DD, YYYY')) AS year, 
        COUNT(*) AS content_count,
        ROUND(AVG(COUNT(*)) OVER (PARTITION BY EXTRACT(YEAR FROM TO_DATE(date_added, 'Month DD, YYYY'))), 2) AS avg_content
@@ -95,35 +100,41 @@ FROM netflix
 WHERE country ILIKE '%India%'
 GROUP BY year
 ORDER BY year DESC;
-
--- 13. Movies that are documentaries
+```
+### 13. Movies that are documentaries
+```sql
 SELECT title, listed_in
 FROM netflix
 WHERE listed_in ILIKE '%Documentaries%' AND type_of_content = 'Movie';
-
--- 14. Null values in the "director" column
+```
+### 14. Null values in the "director" column
+```sql
 SELECT title, type_of_content, director
 FROM netflix
 WHERE director IS NULL;
-
--- 15. Movies Salman Khan acted in over the last 10 years
+```
+### 15. Movies Salman Khan acted in over the last 10 years
+```sql
 SELECT title, release_year
 FROM netflix
 WHERE casts ILIKE '%Salman Khan%' AND 
       release_year > EXTRACT(YEAR FROM CURRENT_DATE) - 10;
-
--- 16. Actor appearing in the most movies
+```
+### 16. Actor appearing in the most movies
+```sql
 SELECT UNNEST(STRING_TO_ARRAY(casts, ',')) AS actor, 
        COUNT(show_id) AS movie_count
 FROM netflix
 GROUP BY actor
 ORDER BY movie_count DESC
 LIMIT 1;
-
--- 17. Classify films as "bad content" or "good content"
+```
+### 17. Classify films as "bad content" or "good content"
+```sql
 SELECT title, description, 
        CASE 
            WHEN description ILIKE '%kill%' OR description ILIKE '%violence%' THEN 'BAD_CONTENT'
            ELSE 'GOOD_CONTENT'
        END AS content_type
 FROM netflix;
+```
