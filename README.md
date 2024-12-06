@@ -9,7 +9,7 @@ Software : PostgreSQL Workbench (PGAdmin 4)
 ## Project Overview :
 The project demonstrates proficiency in SQL through analysis of a Netflix dataset. It includes queries to extract insights, perform aggregations, and apply advanced SQL features. This work showcases the ability to solve business problems using data.
 
-
+```
 ### 1. Total count of rows
 ```sql 
 SELECT COUNT(*) FROM netflix;
@@ -25,7 +25,7 @@ SELECT DISTINCT type_of_content FROM netflix;
 SELECT type_of_content, COUNT(type_of_content) AS count_of_content
 FROM netflix
 GROUP BY type_of_content;
-...
+```
 
 ### 4. Find the most common rating for movies and TV shows
 ```sql
@@ -37,14 +37,14 @@ FROM (
     GROUP BY type_of_content, rating
 ) AS T1
 WHERE ranking = 1;
-...
+```
 
 ### 5. List all the movies released in a specific year (e.g., 2020)
 ```sql
 SELECT title, release_year
 FROM netflix
 WHERE type_of_content = 'Movie' AND release_year = 2020;
-...
+```
 
 ### 6. Top 5 countries with the most content
 ```sql
@@ -54,7 +54,7 @@ FROM netflix
 GROUP BY new_countries
 ORDER BY count_content DESC
 LIMIT 5;
-...
+```
 
 ### 7. Longest-duration movies
 ```sql
@@ -62,7 +62,7 @@ SELECT type_of_content, duration
 FROM netflix
 WHERE type_of_content = 'Movie' AND 
       duration = (SELECT MAX(duration) FROM netflix);
-...
+```
 ### 8. Content added in the last 5 years
 ```sql
 SELECT type_of_content, title, date_added
@@ -137,4 +137,5 @@ SELECT title, description,
            ELSE 'GOOD_CONTENT'
        END AS content_type
 FROM netflix;
+```
 ```
